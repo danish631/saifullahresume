@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saifullah Shaikh — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=VT323&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --paper: #EDE8DC;
+    --aged: #D4C9B0;
+    --faded-teal: #7AADA0;
+    --dusty-rose: #C4826A;
+    --olive: #8B9467;
+    --rust: #B05A3A;
+    --ink: #3A3228;
+    --faded-ink: #6B5D52;
+    --muted-blue: #6A8EA0;
+    --yellow-sticky: #F5E87A;
+    --pink-sticky: #F5C4C4;
+    --blue-sticky: #C4D8F5;
+    --green-sticky: #C4E8C4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, rgba(139,148,103,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(176,90,58,0.06) 0%, transparent 50%);
+    font-family: 'Courier Prime', monospace;
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--ink);
+    border-bottom: 3px solid var(--rust);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+
+  .nav-logo {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    color: var(--yellow-sticky);
+    letter-spacing: 2px;
+    padding: 0.5rem 0;
+    text-shadow: 2px 2px 0px var(--rust);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem 1.1rem;
+    color: var(--aged);
+    text-decoration: none;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+    border-left: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav-links a:hover {
+    background: var(--rust);
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--aged);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'VT323', monospace;
+    font-size: 18vw;
+    color: rgba(58,50,40,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  .hero-tape {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(180,160,100,0.35) 0px,
+      rgba(180,160,100,0.15) 40px,
+      rgba(180,160,100,0.35) 80px
+    );
+    border-top: 1px solid rgba(150,130,80,0.3);
+    border-bottom: 1px solid rgba(150,130,80,0.3);
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1100px;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-text {}
+
+  .hero-eyebrow {
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    color: var(--faded-teal);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name {
+    font-family: 'Special Elite', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    position: relative;
+  }
+
+  .hero-name span {
+    color: var(--rust);
+  }
+
+  .hero-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    color: var(--faded-teal);
+    margin-bottom: 1.5rem;
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+
+  .hero-desc {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--faded-ink);
+    max-width: 480px;
+    border-left: 3px solid var(--dusty-rose);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .badge {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    padding: 0.2rem 0.7rem;
+    letter-spacing: 1px;
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+  }
+
+  .badge.teal { background: var(--faded-teal); }
+  .badge.rust { background: var(--rust); }
+  .badge.olive { background: var(--olive); }
+  .badge.blue { background: var(--muted-blue); }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 2px solid var(--ink);
+    padding: 0.7rem 1.8rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--rust);
+    border-color: var(--rust);
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    padding: 0.7rem 1.8rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  /* HERO PHOTO SIDE */
+  .hero-photo-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .photo-frame {
+    position: relative;
+    display: inline-block;
+  }
+
+  .photo-tape-h {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 22px;
+    background: rgba(245,232,122,0.8);
+    z-index: 5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+
+  .photo-tape-v {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 22px;
+    height: 70px;
+    background: rgba(196,216,245,0.8);
+    z-index: 5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+
+  .profile-img {
+    width: 280px;
+    height: 340px;
+    object-fit: cover;
+    object-position: center top;
+    filter: sepia(25%) contrast(1.05);
+    border: 6px solid var(--paper);
+    box-shadow: 
+      6px 6px 0 var(--aged),
+      12px 12px 0 var(--rust);
+    transform: rotate(1.5deg);
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  .profile-placeholder {
+    width: 280px;
+    height: 340px;
+    background: var(--aged);
+    border: 6px solid var(--paper);
+    box-shadow: 
+      6px 6px 0 var(--aged),
+      12px 12px 0 var(--rust);
+    transform: rotate(1.5deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .profile-placeholder span {
+    font-family: 'VT323', monospace;
+    font-size: 5rem;
+    color: var(--faded-ink);
+  }
+
+  .sticky-note {
+    position: absolute;
+    padding: 0.8rem 1rem;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 0.85rem;
+    transform: rotate(-3deg);
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.15);
+    max-width: 160px;
+    line-height: 1.4;
+    z-index: 10;
+  }
+
+  .sticky-note::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(0,0,0,0.08);
+  }
+
+  .sticky-yellow { background: var(--yellow-sticky); }
+  .sticky-pink { background: var(--pink-sticky); transform: rotate(2deg); }
+  .sticky-blue { background: var(--blue-sticky); transform: rotate(-2deg); }
+  .sticky-green { background: var(--green-sticky); transform: rotate(3deg); }
+
+  .note-1 { bottom: 20px; left: -50px; }
+  .note-2 { top: 30px; right: -40px; }
+
+  /* SECTION COMMON */
+  section {
+    padding: 5rem 2rem;
+    position: relative;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--faded-teal);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .section-title {
+    font-family: 'Special Elite', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--ink);
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--rust);
+  }
+
+  .section-subtitle {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--faded-ink);
+    font-style: italic;
+  }
+
+  /* DIVIDER */
+  .retro-divider {
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: var(--aged);
+    letter-spacing: 4px;
+    padding: 2rem 0;
+    position: relative;
+  }
+
+  .retro-divider::before,
+  .retro-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 35%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--aged));
+  }
+
+  .retro-divider::before { left: 0; }
+  .retro-divider::after { right: 0; background: linear-gradient(to left, transparent, var(--aged)); }
+
+  /* WORK SECTION */
+  #work { background: var(--paper); }
+
+  .work-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .work-tab {
+    padding: 0.6rem 1.2rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--faded-ink);
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+  }
+
+  .work-tab:hover { color: var(--rust); }
+  .work-tab.active {
+    color: var(--ink);
+    border-bottom-color: var(--rust);
+    font-weight: 700;
+    background: var(--cream);
+  }
+
+  .work-panel { display: none; }
+  .work-panel.active { display: block; }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .work-card {
+    background: var(--cream);
+    border: 2px solid var(--aged);
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 5px 5px 0 var(--ink);
+    border-color: var(--ink);
+  }
+
+  .work-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .card-img-wrap {
+    width: 100%;
+    height: 200px;
+    background: var(--aged);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  /* Logo cards use contain + white bg */
+  .card-img-wrap img.logo-img {
+    object-fit: contain;
+    padding: 1rem;
+    background: #fff;
+  }
+
+  .work-card:hover .card-img-wrap img {
+    transform: scale(1.04);
+  }
+
+  .card-placeholder-icon {
+    font-size: 3.5rem;
+    color: var(--faded-ink);
+    font-family: 'VT323', monospace;
+    opacity: 0.5;
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(58,50,40,0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+    gap: 0.5rem;
+  }
+
+  .card-overlay span {
+    color: var(--cream);
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+
+  .card-overlay .tool-tag {
+    background: var(--rust);
+    color: #fff;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.6rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .card-body {
+    padding: 0.9rem 1rem;
+  }
+
+  .card-title {
+    font-family: 'Special Elite', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .card-meta {
+    font-size: 0.75rem;
+    color: var(--faded-ink);
+    font-style: italic;
+  }
+
+  .card-tool {
+    display: inline-block;
+    margin-top: 0.4rem;
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    color: var(--rust);
+    letter-spacing: 1px;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30,25,20,0.92);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal-box {
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 8px 8px 0 var(--rust);
+  }
+
+  .modal-header {
+    background: var(--ink);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modal-title {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    color: var(--cream);
+    letter-spacing: 2px;
+  }
+
+  .modal-close {
+    background: var(--rust);
+    border: none;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-close:hover { background: #8B3020; }
+
+  .modal-body {
+    padding: 2rem;
+  }
+
+  .modal-img-area {
+    width: 100%;
+    min-height: 300px;
+    max-height: 70vh;
+    background: var(--aged);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--aged);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .modal-img-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: 70vh;
+    display: block;
+  }
+
+  .modal-img-area .placeholder-text {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    color: var(--faded-ink);
+    text-align: center;
+    padding: 2rem;
+    line-height: 1.4;
+  }
+
+  .modal-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--aged);
+  }
+
+  .modal-tag {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    padding: 0.2rem 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  /* EXPERIENCE SECTION */
+  #experience { background: var(--cream); }
+
+  .exp-timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--aged) 0,
+      var(--aged) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  }
+
+  .exp-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: var(--paper);
+    border: 1px solid var(--aged);
+    border-left: 4px solid var(--rust);
+  }
+
+  .exp-item::before {
+    content: '●';
+    position: absolute;
+    left: -2.9rem;
+    top: 1.5rem;
+    color: var(--rust);
+    font-size: 1rem;
+  }
+
+  .exp-dot {
+    position: absolute;
+    left: -3rem;
+    top: 1.5rem;
+    width: 12px;
+    height: 12px;
+    background: var(--rust);
+    border: 3px solid var(--cream);
+  }
+
+  .exp-date {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--faded-teal);
+    letter-spacing: 2px;
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-role {
+    font-family: 'Special Elite', serif;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+
+  .exp-company {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    color: var(--rust);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .exp-points {
+    list-style: none;
+  }
+
+  .exp-points li {
+    font-size: 0.88rem;
+    color: var(--faded-ink);
+    line-height: 1.7;
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+
+  .exp-points li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--faded-teal);
+    font-family: 'VT323', monospace;
+  }
+
+  .skills-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--aged);
+  }
+
+  .skill-chip {
+    background: var(--cream);
+    border: 1px solid var(--faded-teal);
+    color: var(--faded-teal);
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    padding: 0.1rem 0.6rem;
+    letter-spacing: 1px;
+  }
+
+  /* AI TOOLS SECTION */
+  .ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .ai-card {
+    background: var(--paper);
+    border: 1px solid var(--aged);
+    border-top: 4px solid var(--faded-teal);
+    padding: 1.2rem;
+    transition: all 0.2s;
+  }
+
+  .ai-card:hover {
+    transform: translateY(-3px);
+    border-top-color: var(--rust);
+  }
+
+  .ai-card-label {
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    color: var(--faded-teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .ai-card-title {
+    font-family: 'Special Elite', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .ai-card-desc {
+    font-size: 0.8rem;
+    color: var(--faded-ink);
+    line-height: 1.6;
+  }
+
+  /* ABOUT SECTION */
+  #about { background: var(--paper); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: var(--faded-ink);
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p:first-child::first-letter {
+    font-family: 'Special Elite', serif;
+    font-size: 3.5rem;
+    color: var(--rust);
+    float: left;
+    margin: 0 0.3rem -0.2rem 0;
+    line-height: 1;
+  }
+
+  .education-box {
+    background: var(--cream);
+    border: 1px solid var(--aged);
+    padding: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .education-box::before {
+    content: 'EDUCATION';
+    position: absolute;
+    top: -0.6rem;
+    left: 1rem;
+    background: var(--cream);
+    padding: 0 0.5rem;
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    color: var(--faded-teal);
+    letter-spacing: 3px;
+  }
+
+  .edu-item {
+    padding: 0.6rem 0;
+    border-bottom: 1px dashed var(--aged);
+  }
+
+  .edu-item:last-child { border-bottom: none; }
+
+  .edu-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .edu-sub {
+    font-size: 0.78rem;
+    color: var(--faded-ink);
+    font-style: italic;
+  }
+
+  .about-sticky-wrap {
+    position: relative;
+  }
+
+  .about-sticky {
+    position: relative;
+  }
+
+  .big-sticky {
+    background: var(--yellow-sticky);
+    padding: 1.5rem 1.5rem 2rem;
+    transform: rotate(-1deg);
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 2rem;
+  }
+
+  .big-sticky h3 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(0,0,0,0.15);
+    padding-bottom: 0.5rem;
+  }
+
+  .big-sticky ul {
+    list-style: none;
+  }
+
+  .big-sticky ul li {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 0.85rem;
+    color: var(--ink);
+    padding: 0.3rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .big-sticky ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--rust);
+  }
+
+  .tool-sticky {
+    background: var(--pink-sticky);
+    padding: 1.5rem;
+    transform: rotate(1.5deg);
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 1.5rem;
+  }
+
+  .tool-sticky h3 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+  }
+
+  .tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tool-tag-item {
+    background: rgba(58,50,40,0.12);
+    color: var(--ink);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(58,50,40,0.2);
+  }
+
+  /* ACHIEVEMENTS */
+  #achievements { background: var(--cream); }
+
+  .ach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .ach-card {
+    background: var(--paper);
+    border: 1px solid var(--aged);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+
+  .ach-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .ach-card::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    font-family: 'Special Elite', serif;
+    font-size: 5rem;
+    color: var(--aged);
+    line-height: 1;
+  }
+
+  .ach-num {
+    font-family: 'VT323', monospace;
+    font-size: 3rem;
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .ach-title {
+    font-family: 'Special Elite', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .ach-desc {
+    font-size: 0.84rem;
+    color: var(--faded-ink);
+    line-height: 1.65;
+  }
+
+  /* CONTACT SECTION */
+  #contact {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 5rem 2rem;
+  }
+
+  #contact .section-label { color: var(--faded-teal); }
+  #contact .section-title { color: var(--cream); }
+  #contact .section-title::after { background: var(--rust); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--rust);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    color: var(--faded-teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-value {
+    font-size: 0.9rem;
+    color: var(--aged);
+    word-break: break-all;
+  }
+
+  .contact-value a {
+    color: var(--aged);
+    text-decoration: none;
+  }
+
+  .contact-value a:hover { color: var(--cream); text-decoration: underline; }
+
+  .contact-message {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 4px solid var(--faded-teal);
+    padding: 2rem;
+  }
+
+  .contact-message h3 {
+    font-family: 'Special Elite', serif;
+    font-size: 1.4rem;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .contact-message p {
+    font-size: 0.88rem;
+    color: var(--aged);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1A1510;
+    padding: 2rem;
+    text-align: center;
+    border-top: 3px solid var(--rust);
+  }
+
+  .footer-text {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--aged);
+    letter-spacing: 2px;
+  }
+
+  /* SCROLL ANIMATION */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* BACK TO TOP */
+  .back-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--rust);
+    color: #fff;
+    border: none;
+    width: 44px;
+    height: 44px;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: all 0.2s;
+  }
+
+  .back-top:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+
+  .back-top.visible { display: flex; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+    .hero-text { order: 2; }
+    .hero-photo-side { order: 1; }
+    .hero-desc { border-left: none; border-top: 3px solid var(--dusty-rose); padding-left: 0; padding-top: 0.75rem; }
+    .hero-badges { justify-content: center; }
+    .hero-cta { justify-content: center; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--ink); }
+    .nav-links.open { display: flex; }
+    .nav-links a { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 2rem; }
+    .hamburger { display: flex; }
+    .nav-inner { position: relative; flex-wrap: wrap; }
+    .work-tabs { overflow-x: auto; flex-wrap: nowrap; }
+    .work-tab { white-space: nowrap; font-size: 0.7rem; padding: 0.5rem 0.8rem; }
+    .cards-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    .profile-img, .profile-placeholder { width: 220px; height: 270px; }
+    .note-1 { display: none; }
+    .note-2 { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 3.5rem 1.25rem; }
+    .hero { padding: 3rem 1.25rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .ach-grid { grid-template-columns: 1fr; }
+    .ai-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">SAIF.</div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#achievements">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-tape"></div>
+  <div class="hero-bg-text">DESIGN</div>
+
+  <div class="hero-content">
+    <div class="hero-text fade-in">
+      <!-- <span class="hero-eyebrow">// Portfolio 2025</span> -->
+      <h1 class="hero-name">Saifullah<br><span>Shaikh</span></h1>
+      <div class="hero-title">Graphic Designer & Marketer</div>
+      <p class="hero-desc">
+        Dynamic & result-oriented professional blending 4+ years of Campaign Management with a deep passion for UI/UX and Graphic Design. Currently leading the end-to-end redesign of Samco Mutual Fund's corporate website.
+      </p>
+      <div class="hero-badges">
+        <span class="badge teal">Photoshop</span>
+        <span class="badge">Illustrator</span>
+        <span class="badge rust">Figma</span>
+        <span class="badge olive">Generative AI</span>
+        <span class="badge blue">UI/UX</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-side fade-in">
+      <div class="photo-frame">
+        <div class="photo-tape-h"></div>
+        <div class="photo-tape-v"></div>
+        <!-- PROFILE-IMG: Replace src with your profile photo URL -->
+        <img src="https://i.postimg.cc/tJcPR7yR/img.jpg" alt="Saifullah Shaikh" class="profile-img" id="profileImg">
+        <div class="sticky-note sticky-yellow note-1">
+          📍 Mumbai,<br>Maharashtra
+        </div>
+        <div class="sticky-note sticky-blue note-2">
+          Available<br>for work! ✌️
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK SECTION -->
+<section id="work">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-label">// creative output</span>
+      <h2 class="section-title">My Work</h2>
+      <p class="section-subtitle">A curated selection of projects spanning brand identity, digital marketing, UI/UX, and generative AI</p>
+    </div>
+
+    <div class="work-tabs" id="workTabs">
+      <button class="work-tab active" data-panel="logo">Logo Design</button>
+      <button class="work-tab" data-panel="social">Social Media</button>
+      <button class="work-tab" data-panel="whatsapp">WhatsApp</button>
+      <button class="work-tab" data-panel="webinar">Webinar</button>
+      <button class="work-tab" data-panel="emailers">Emailers</button>
+      <button class="work-tab" data-panel="landing">Landing Pages</button>
+      <button class="work-tab" data-panel="uiux">UI/UX Figma</button>
+      <button class="work-tab" data-panel="aigen">AI Generative</button>
+      <button class="work-tab" data-panel="personal">Personal Work</button>
+    </div>
+
+    <!-- LOGO DESIGN -->
+    <div class="work-panel active" id="panel-logo">
+      <div class="cards-grid">
+        <div class="work-card" onclick="openModal('HRMS Logo', 'Word Mark / Letter Mark logo crafted for an HR management system. Clean, professional identity combining letterform and icon elements.', 'Adobe Illustrator', 'Brand Identity · Word Mark', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <img src="https://plain-apac-prod-public.komododecks.com/202606/16/8riHkygUpqPwA3Pn5xLd/image.jpg" alt="HRMS Logo" class="logo-img">
+            <div class="card-overlay">
+              <span>VIEW PROJECT</span>
+              <span class="tool-tag">Adobe Illustrator</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">HRMS Logo</div>
+            <div class="card-meta">HR Management System</div>
+            <span class="card-tool">Adobe Illustrator</span>
+          </div>
+        </div>
+        <div class="work-card" onclick="openModal('S-COM Logo', 'Combination mark logo designed for S-COM — a bold typographic identity fusing letterform with a dynamic graphic symbol.', 'Adobe Illustrator', 'Brand Identity · Combination Mark', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <img src="https://plain-apac-prod-public.komododecks.com/202606/16/hFABoX45SDRcmCiVkJJu/image.jpg" alt="S-COM Logo" class="logo-img">
+            <div class="card-overlay">
+              <span>VIEW PROJECT</span>
+              <span class="tool-tag">Adobe Illustrator</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">S-COM Logo</div>
+            <div class="card-meta">Combination Mark</div>
+            <span class="card-tool">Adobe Illustrator</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="work-panel" id="panel-social">
+      <div class="cards-grid">
+        <div class="work-card" onclick="openModal('Samco MF AUM Carousel', 'Educational carousel explaining the gap between India\'s 16% MF AUM to GDP versus the global 63% average. Designed for Instagram grid format.', 'Adobe Illustrator', 'Instagram Carousel · Finance', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- SOCIAL-01: Replace src with your Social Media image 1 URL -->
+            <img src="https://i.postimg.cc/D040g6Vg/sm02.jpg" alt="MF AUM Carousel">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">MF AUM Carousel</div><div class="card-meta">Instagram · Samco Mutual Fund</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Active Momentum Fund Grid', 'Instagram grid series introducing India\'s 1st Active Momentum Mutual Fund. Multi-post campaign with cohesive visual identity and data storytelling.', 'Adobe Photoshop', 'Instagram Grid · Fund Launch', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- SOCIAL-02: Replace src with your Social Media image 2 URL -->
+            <img src="https://i.postimg.cc/pTh5GRzS/sm04.jpg" alt="Active Momentum Fund Grid">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">Active Momentum Fund Grid</div><div class="card-meta">Instagram · Fund Launch</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('PutInSIP Campaign Posts', 'Series of social media creatives for Samco\'s #PutInSIP campaign encouraging investors to start SIPs. Ganesh Chaturthi themed edition.', 'Adobe Illustrator', 'Campaign Posts · Festive', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- SOCIAL-03: Replace src with your Social Media image 3 URL -->
+            <img src="https://i.postimg.cc/0NrzjPWj/sm01.jpg" alt="PutInSIP Campaign">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">#PutInSIP Campaign</div><div class="card-meta">Festival Campaign · Samco</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Mahavir Jayanti Creative', 'Heartwarming Mahavir Jayanti social post featuring illustrated characters, celebrating the values of peace, compassion, and wisdom while fostering an emotional connection with investors.', 'Adobe Illustrator', 'Wishing Post · Festive', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- SOCIAL-04: Replace src with your Social Media image 4 URL -->
+            <img src="https://i.postimg.cc/gJTqjgH9/Mahavj-4.jpg" alt="Friendship Day Post">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Mahavir Jayanti Post</div><div class="card-meta">Festival Creative · Samco</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Mega Meet-Up Campaign', 'Investor education social media campaign for Samco Mutual Fund featuring webinar highlights, expert insights, and strong event registration call-to-action design.', 'Adobe Photoshop', 'Product Campaign · SME Finance', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- SOCIAL-05: Replace src with your Social Media image 5 URL -->
+            <img src="https://i.postimg.cc/zXtbry7V/sm-cover-pic.jpg" alt="Vyapar Mitra Campaign">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">Mega Meet-Up Campaign</div><div class="card-meta">Business Campaign</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Health Insurance Awareness Post', 'Awareness creative for health insurance choosing using maze concept — \'Choosing the right health insurance should not be a maze.\'', 'Adobe Illustrator', 'Awareness Creative · Insurance', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- SOCIAL-06: Replace src with your Social Media image 6 URL -->
+            <img src="https://i.postimg.cc/c1T6Rvp4/HCIN-Creative-1.jpg" alt="Health Insurance Awareness">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Health Insurance Awareness</div><div class="card-meta">Awareness Creative</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHATSAPP FORWARDS -->
+    <div class="work-panel" id="panel-whatsapp">
+      <div class="cards-grid">
+        <div class="work-card" onclick="openModal('Samco Active Momentum Fund — Key Highlights', 'Detailed WhatsApp forward explaining Speed & Agility, Anti-Momentum Hedge, and Hidden Gems discovery features of the fund. Designed for distributor outreach.', 'Adobe Photoshop', 'WhatsApp Forward · B2B Distribution', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WHATSAPP-01: Replace src with your WhatsApp image 1 URL -->
+            <img src="https://i.postimg.cc/5yR43Zpt/wh-cover-pic.jpg" alt="Active Momentum Key Highlights">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">Active Momentum — Key Highlights</div><div class="card-meta">WhatsApp Forward · B2B</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('5 Reasons — Dynamic Asset Allocation Fund', '5-point investor education forward for Samco Dynamic Asset Allocation Fund covering momentum trends, drawdown protection, dynamic hybrid nature, real-time allocation, and stop-loss system.', 'Adobe Photoshop', 'WhatsApp Forward · Education', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WHATSAPP-02: Replace src with your WhatsApp image 2 URL -->
+            <img src="https://i.postimg.cc/nc9pxS0g/wh02.jpg" alt="5 Reasons DAAF">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">5 Reasons to Invest — DAAF</div><div class="card-meta">Investor Education</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('DAAF — Alpha with Lower Volatility', 'Explainer forward on how Samco Dynamic Asset Allocation Fund achieves alpha: zero equity in bear, 100% in bull, mid/small cap alpha, and momentum selection effect.', 'Adobe Illustrator', 'WhatsApp Forward · Fund Education', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WHATSAPP-03: Replace src with your WhatsApp image 3 URL -->
+            <img src="https://i.postimg.cc/pTr3Zy7N/wh06.jpg" alt="DAAF Alpha Strategy">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">DAAF Alpha Strategy</div><div class="card-meta">Fund Education</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('#PutInSIP Training Program', 'WhatsApp campaign forward for Samco\'s exclusive training program for mutual fund distributors — highlighting 4 key benefits and eligibility criteria.', 'Adobe Illustrator', 'WhatsApp Forward · Partner Program', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WHATSAPP-04: Replace src with your WhatsApp image 4 URL -->
+            <img src="https://i.postimg.cc/9fQc6mSD/wh03.jpg" alt="PutInSIP Training">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">#PutInSIP Training Program</div><div class="card-meta">Partner Outreach</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('See You in 1 Hour Forward', 'Your gateway to informed investing starts in just 1 hour—see you at the webinar!', 'Adobe Photoshop', 'WhatsApp Forward · Meet-Up', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WHATSAPP-05: Replace src with your WhatsApp image 5 URL -->
+            <img src="https://i.postimg.cc/hP5Jd1MP/Unitholders-Meet-invite-WA-tigers-1-hr.jpg" alt="See You in 1 Hour">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">See You in 1 Hour</div><div class="card-meta">Meet-Up Campaign</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Vigilance Awareness Week 2022', 'Corporate social responsibility creative for Vigilance Awareness Week (Oct 31 – Nov 6, 2022). Break the Corruption Chain theme with integrity pledge CTA.', 'Adobe Illustrator', 'CSR Creative · Awareness', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WHATSAPP-06: Replace src with your WhatsApp image 6 URL -->
+            <img src="https://i.postimg.cc/bJNV4Pnw/wh05.jpg" alt="Vigilance Awareness Week">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Vigilance Awareness Week</div><div class="card-meta">CSR · Awareness</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('TimerSTP — Samco Overnight Fund', 'Launch forward for Samco\'s TimerSTP — a systematic transfer plan using Overnight Fund as source. NFO dates Oct 4–6, 2022.', 'Adobe Illustrator', 'WhatsApp Forward · Product Launch', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WHATSAPP-07: Replace src with your WhatsApp image 7 URL -->
+            <img src="https://i.postimg.cc/8PBKksbD/wh04.jpg" alt="TimerSTP Launch">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">TimerSTP Launch</div><div class="card-meta">Product Launch</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEBINAR CAMPAIGNS -->
+    <div class="work-panel" id="panel-webinar">
+      <div class="cards-grid">
+        <div class="work-card" onclick="openModal('MFD National Mega Meet-Up — Save the Date', 'Premium invite creative for Samco\'s MFD National Mega Digital Meet-Up. Gold-on-dark luxury design with guest speakers: Mr. Jimeet Modi (CEO), Mr. Umesh Kumar Mehta (CIO), and more.', 'Adobe Illustrator', 'Webinar Creative · Premium Event', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WEBINAR-01: Replace src with your Webinar image 1 URL -->
+            <img src="https://i.postimg.cc/fbLDjGbp/Cover-img-wb.jpg" alt="MFD Mega Meet-Up Invite">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">MFD Mega Meet-Up Invite</div><div class="card-meta">Webinar Creative · Premium</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Personal Invitation — Partner Email Creative', 'Personalized invitation design for zonal heads to invite MFD partners to the Mega Meet-Up. Professional yet warm design with speaker profiles and Zoom details.', 'Adobe Illustrator', 'Webinar Creative · Partner Invite', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WEBINAR-02: Replace src with your Webinar image 2 URL -->
+            <img src="https://i.postimg.cc/pXRNJwGZ/per-invi.jpg" alt="Personal Partner Invitation">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Personal Partner Invitation</div><div class="card-meta">Partner Outreach Creative</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Live Now! — Partner Email Creative', 'The session has begun—join now to gain valuable market insights from industry experts.', 'Adobe Illustrator', 'Webinar Creative · Partner Invite', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WEBINAR-03: Replace src with your Webinar image 2 URL -->
+            <img src="https://i.postimg.cc/d302qtQH/vrlive.jpg" alt="Personal Partner Invitation">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">We’re Live Now!</div><div class="card-meta">Live Now! Creative</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Investment Webinar Campaign', 'Designed a webinar promotion creative showcasing key investment insights, speaker highlights, and event details to drive registrations and audience engagement.', 'Adobe Illustrator', 'Webinar Creative · Partner Invite', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- WEBINAR-04: Replace src with your Webinar image 2 URL -->
+            <img src="https://i.postimg.cc/zXQPy4gt/Cam-cover-pic.jpg" alt="Personal Partner Invitation">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Investment Webinar Campaign</div><div class="card-meta">Investment Webinar Invitation</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAILERS -->
+    <div class="work-panel" id="panel-emailers">
+      <div class="cards-grid">
+        <div class="work-card" onclick="openModal('5 Reasons Email — Active Momentum Fund', 'Designed a product-focused marketing creative highlighting key fund benefits, investment strategy, and value propositions through an engaging and informative visual layout.', 'Adobe Photoshop', 'Email Banner · B2B Campaign', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- EMAILER-01: Replace src with your Emailer image 1 URL -->
+            <img src="https://i.postimg.cc/RFft4sHQ/Email-01.jpg" alt="Active Momentum Fund Emailer">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">Active Momentum Fund Emailer</div><div class="card-meta">Email Campaign · B2B</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('#PutInSIP — Earn, Learn & Grow Emailer', 'Training program emailer for Samco\'s exclusive #PutInSIP initiative. Multi-section layout covering market insight, business analysis, digital marketing, lead gen modules.', 'Adobe Illustrator', 'Email Banner · B2B Partner', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- EMAILER-02: Replace src with your Emailer image 2 URL -->
+            <img src="https://i.postimg.cc/4dBg7ZVC/emailer02.jpg" alt="PutInSIP Training Emailer">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">#PutInSIP Training Emailer</div><div class="card-meta">B2B Partner Email</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Sailing Through High Market Tides — Webinar Email', 'Webinar invite emailer for Umesh Kumar Mehta (CIO, Samco). Premium design with topic highlights, Add to Calendar CTA, and Zoom event details for Aug 26, 2022.', 'Adobe Illustrator', 'Email Banner · Webinar Invite', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- EMAILER-03: Replace src with your Emailer image 3 URL -->
+            <img src="https://i.postimg.cc/0QtT5n1K/Emailer04.jpg" alt="High Market Tides Emailer">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">High Market Tides Webinar Email</div><div class="card-meta">Webinar Invite Email</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('HDFC Bank — 155 Crore Happy Customers', 'Brand milestone emailer for HDFC Bank celebrating 155 Crore+ trusted customers. Bold typography-first layout with key stats: 4x coverage, 99% claim settlement, 12,000+ cashless hospitals.', 'Adobe Illustrator', 'Email Banner · Brand Campaign', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- EMAILER-04: Replace src with your Emailer image 4 URL -->
+            <img src="https://i.postimg.cc/YC1TLMw7/HDFC-Final.jpg" alt="HDFC Bank Milestone Emailer">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">HDFC Bank Milestone Emailer</div><div class="card-meta">Brand Milestone Campaign</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LANDING PAGES -->
+    <div class="work-panel" id="panel-landing">
+      <div class="cards-grid">
+        <div class="work-card" onclick="openModal('Samco ELSS Tax Saver Fund — Website Homepage', 'Designed responsive website homepage for Samco MF featuring trending mutual fund schemes, knowledge center, HedgeSHIELD™ framework section, testimonials, and FAQ. Full UX flow.', 'Figma + Adobe Illustrator', 'Website · Homepage Design', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- LANDING-01: Replace src with your Landing Page image 1 URL -->
+            <img src="https://i.postimg.cc/T3JfMr1X/landing02.jpg" alt="Samco MF Homepage">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Figma + Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Samco MF Homepage</div><div class="card-meta">Website · Full Homepage</div><span class="card-tool">Figma + Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Shriram Finance — Fixed Deposit Landing Page', 'High-converting landing page for Shriram Finance Fixed Deposit (9.40% p.a.). Features investment calculator, 4-step onboarding flow, features & benefits section, and Invest Online CTA.', 'Adobe Illustrator', 'Landing Page · Financial Product', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- LANDING-02: Replace src with your Landing Page image 2 URL -->
+            <img src="https://i.postimg.cc/XvNZTNjv/Shriram-Finance-Final.jpg" alt="Shriram Finance FD Page">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Shriram Finance FD Page</div><div class="card-meta">Landing Page · Finance</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Samco MF — Scheme Listing Page', 'Multi-scheme listing page for Samco Mutual Fund portal. Card-based layout for each fund with performance data, invest options, and FAQs. Designed for high conversion.', 'Figma + Adobe Illustrator', 'Website · Scheme Listing', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- LANDING-03: Replace src with your Landing Page image 3 URL -->
+            <img src="https://i.postimg.cc/PJHnRJHV/landing03.jpg" alt="Samco Scheme Listing">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Figma + Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Samco Scheme Listing Page</div><div class="card-meta">Website · Fund Listing</div><span class="card-tool">Figma + Adobe Illustrator</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UI/UX FIGMA -->
+    <div class="work-panel" id="panel-uiux">
+      <div class="cards-grid">
+        <div class="work-card" onclick="openModal('Samco Website Redesign — Homepage', 'High-fidelity Figma redesign of Samco MF website: dark navy UI, fund performance cards, quick links, investor stats (₹2,900+ Cr AUM, 2,00,000+ investors), blog section, and full footer.', 'Figma', 'UI/UX · Website Redesign', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- UIUX-01: Replace src with your UI/UX image 1 URL -->
+            <img src="https://i.postimg.cc/5ySrsgyT/Main-Samco-MF.jpg" alt="Samco Website Redesign">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Figma</span></div></div>
+          <div class="card-body"><div class="card-title">Samco Website Redesign</div><div class="card-meta">UI/UX · Homepage</div><span class="card-tool">Figma</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Fund Detail Pages — Multi Asset Allocation', 'Full Figma design for Samco Multi Asset Allocation Fund pages: fund overview, performance tab, portfolio holdings (Top 10 + exposure breakdown), fund manager profiles, documents, disclosure, and FAQ.', 'Figma', 'UI/UX · Fund Detail Pages', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- UIUX-02: Replace src with your UI/UX image 2 URL -->
+            <img src="https://i.postimg.cc/VvmG0tgv/Performance.jpg" alt="Fund Detail Page Suite">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Figma</span></div></div>
+          <div class="card-body"><div class="card-title">Fund Detail Page Suite</div><div class="card-meta">UI/UX · Multi-Page Design</div><span class="card-tool">Figma</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Order Confirmation Screens', 'Complete set of order success screens: Lumpsum, SWP, Switch, SIP, and Normal STP confirmations. Consistent design system with scheme details, folio, order number, and CTA.', 'Figma', 'UI/UX · Transaction Flows', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- UIUX-03: Replace src with your UI/UX image 3 URL -->
+            <img src="https://i.postimg.cc/C1HJ010h/Order-06.jpg" alt="Order Confirmation Screens">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Figma</span></div></div>
+          <div class="card-body"><div class="card-title">Order Confirmation Screens</div><div class="card-meta">UI/UX · Transaction Flow</div><span class="card-tool">Figma</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Historical NAV & Returns Calculator', 'Data-heavy Figma screens for Historical NAV Change charts, portfolio returns table, and interactive Returns Calculator — supporting investor research within the Samco platform.', 'Figma', 'UI/UX · Data Visualization', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- UIUX-04: Replace src with your UI/UX image 4 URL -->
+            <img src="https://i.postimg.cc/7LSn16f3/Investor-Portfolio.png" alt="NAV Charts and Calculator">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Figma</span></div></div>
+          <div class="card-body"><div class="card-title">NAV Charts & Calculator</div><div class="card-meta">UI/UX · Data Visualization</div><span class="card-tool">Figma</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI GENERATIVE -->
+    <div class="work-panel" id="panel-aigen">
+      <div class="cards-grid">
+        <div class="work-card" onclick="openModal('Eid Al-Adha Greeting Creative', 'Designed a festive greeting creative blending meaningful symbolism, elegant typography, and visual storytelling to celebrate the spirit of sacrifice, gratitude, and togetherness.', 'Chat GPT image gen 2.0', 'AI Generative · Festive Campaign', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- AIGEN-01: Replace src with your AI Generative image 1 URL -->
+            <img src="https://i.postimg.cc/BbP7nVzx/Eid-al-adha.png" alt="Eid Al-Adha Greeting Creative">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Chat GPT image gen 2.0</span></div></div>
+          <div class="card-body"><div class="card-title">Eid Al-Adha Greeting Creative</div><div class="card-meta">AI Generative · Festive</div><span class="card-tool">Chat GPT image gen 2.0</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Maharashtra Day Tribute Creative', 'Created an AI-generated commemorative artwork celebrating Maharashtra Day through historical symbolism, cultural heritage, and detailed visual storytelling.', 'Chat GPT image gen 2.0', 'AI Generative · Festive Campaign', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- AIGEN-02: Replace src with your AI Generative image 2 URL -->
+            <img src="https://i.postimg.cc/3J5QDXZp/img.png" alt="Maharashtra Day Tribute Creative">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Chat GPT image gen 2.0</span></div></div>
+          <div class="card-body"><div class="card-title">Maharashtra Day Tribute Creative</div><div class="card-meta">AI Gen · Festive</div><span class="card-tool">Chat GPT image gen 2.0</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Mother’s Day Tribute Creative', 'Conceptualized and directed an AI-generated creative that combines emotional messaging, artistic visuals, and modern design aesthetics to celebrate motherhood.', 'Chat GPT image gen 2.0', 'AI Generative · Wishing Post', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- AIGEN-03: Replace src with your AI Generative image 3 URL -->
+            <img src="https://i.postimg.cc/8PfpWkW8/Chat-GPT-Image-Jun-19-2026-10-18-24-AM.png" alt="Mother’s Day Tribute Creative">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Chat GPT image gen 2.0</span></div></div>
+          <div class="card-body"><div class="card-title">Mother’s Day Tribute Creative</div><div class="card-meta">AI Gen · Wishing Post</div><span class="card-tool">Chat GPT image gen 2.0</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('AI-Generated Webinar Promotion Creative', 'Designed an AI-generated event marketing visual featuring location-based storytelling, speaker branding, and engaging promotional elements to drive webinar attendance.', 'Chat GPT image gen 2.0', 'AI Generative · Product Campaign', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- AIGEN-04: Replace src with your AI Generative image 4 URL -->
+            <img src="https://i.postimg.cc/L5Mc1RM1/Chat-GPT-Image-Jun-19-2026-10-20-13-AM.png" alt="Watermelon Season Drop">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Chat GPT image gen 2.0</span></div></div>
+          <div class="card-body"><div class="card-title">AI-Generated Webinar Promotion Creative</div><div class="card-meta">AI Gen · Product Campaign</div><span class="card-tool">Chat GPT image gen 2.0</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Business Card Design', 'Designed a premium AI-generated business card collection featuring multiple branding concepts, luxury aesthetics, and professional identity design for corporate use.', 'Chat GPT image gen 2.0', 'AI Generative · Business Card', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- AIGEN-05: Replace src with your AI Generative image 5 URL -->
+            <img src="https://i.postimg.cc/PqjY9RhZ/Chat-GPT-Image-Jun-19-2026-10-19-00-AM.png" alt="We're OPEN Brand Rise">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Chat GPT image gen 2.0</span></div></div>
+          <div class="card-body"><div class="card-title">Business Card Design</div><div class="card-meta">AI Gen · Business Card</div><span class="card-tool">Chat GPT image gen 2.0</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Labour Day Campaign Poster', 'A Labour Day poster celebrating the spirit of hard work, dedication, and unity across diverse professions.', 'Chat GPT image gen 2.0', 'AI Generative · Awareness', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- AIGEN-06: Replace src with your AI Generative image 6 URL -->
+            <img src="https://i.postimg.cc/brxGjQPc/Chat-GPT-Image-Jun-19-2026-10-19-17-AM.png" alt="Chat GPT image gen 2.0">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Chat GPT image gen 2.0</span></div></div>
+          <div class="card-body"><div class="card-title">Labour Day Campaign Poster</div><div class="card-meta">AI Gen · Awareness</div><span class="card-tool">Chat GPT image gen 2.0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERSONAL WORK -->
+    <div class="work-panel" id="panel-personal">
+      <div class="cards-grid">
+        <div class="work-card" onclick="openModal('Food Promotion Post', 'A vibrant promotional design created to highlight menu specials and drive customer engagement.', 'Adobe Photoshop', 'Personal · Food Post', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- PERSONAL-01: Replace src with your Personal Work image 1 URL -->
+            <img src="https://i.postimg.cc/bv6YkmyQ/Templats-1.jpg" alt="Food Promotion Social Media Post">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">Food Promotion Post</div><div class="card-meta">Personal · Food Post</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Christmas Campaign Creative', 'A festive promotional design created to capture the spirit of Christmas celebrations with a premium visual approach.', 'Adobe Illustrator', 'Personal · Festive Post', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- PERSONAL-02: Replace src with your Personal Work image 2 URL -->
+            <img src="https://i.postimg.cc/SRhPspBV/Christmas.jpg" alt="Christmas Campaign Creative">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Christmas Campaign Creative</div><div class="card-meta">Personal · Festive Post</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Happy Maharashtra Day', 'State Day creative celebrating Maharashtra\'s diversity through cuisine. Deep blue background with food icons forming circular pattern, Devanagari headline typography.', 'Adobe Illustrator', 'Personal · Festival', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- PERSONAL-03: Replace src with your Personal Work image 3 URL -->
+            <img src="https://i.postimg.cc/2ygfTtMb/Maharashtra-Day.jpg" alt="Happy Maharashtra Day">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Illustrator</span></div></div>
+          <div class="card-body"><div class="card-title">Happy Maharashtra Day</div><div class="card-meta">Personal · Festival Creative</div><span class="card-tool">Adobe Illustrator</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Admission Open Promotional Banner', 'Professional educational poster design focused on clear messaging and visual appeal.', 'Adobe Photoshop', 'Personal · Promotional Banner', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- PERSONAL-04: Replace src with your Personal Work image 4 URL -->
+            <img src="https://i.postimg.cc/y8mkgh3j/Creative11feb.jpg" alt="Admission Open Promotional Banner">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">Admission Open Promotional Banner</div><div class="card-meta">Personal · Promotional Banner</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('Instagram Story Creative Design', 'Minimal and aesthetic social media story design with clean typography.', 'Adobe Photoshop', 'Personal · Travel Brand', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- PERSONAL-05: Replace src with your Personal Work image 5 URL -->
+            <img src="https://i.postimg.cc/Zq0nfGDf/Creativefeb27.jpg" alt="Instagram Story Creative Design">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">Instagram Story Creative Design</div><div class="card-meta">Personal · Travel Brand</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+        <div class="work-card" onclick="openModal('We Are Hiring — Marketing Director', 'Job post creative for a furniture/interior brand. Dark green aesthetic with product photography, minimal typography, and dual qualification tags for senior hire.', 'Adobe Photoshop', 'Personal · Recruitment', this.querySelector('img').src)">
+          <div class="card-img-wrap">
+            <!-- PERSONAL-06: Replace src with your Personal Work image 6 URL -->
+            <img src="https://i.postimg.cc/g28GtYY6/Creative26feb.jpg" alt="We Are Hiring Post">
+            <div class="card-overlay"><span>VIEW PROJECT</span><span class="tool-tag">Adobe Photoshop</span></div></div>
+          <div class="card-body"><div class="card-title">We Are Hiring Post</div><div class="card-meta">Personal · Recruitment</div><span class="card-tool">Adobe Photoshop</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-label">// career journey</span>
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">Fields of expertise built across 4+ years in the financial marketing industry</p>
+    </div>
+
+    <div class="exp-timeline fade-in">
+
+      <!-- Current Role -->
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-date">DEC 2025 — PRESENT</div>
+        <div class="exp-role">Assistant Manager</div>
+        <div class="exp-company">Samco Mutual Fund — Marketing & Graphic Design</div>
+        <ul class="exp-points">
+          <li><strong>Campaign Strategy:</strong> Leading multi-channel marketing operations — WhatsApp, SMS, Email, and RCS campaigns driving investor engagement at scale.</li>
+          <li><strong>UI/UX Design:</strong> Spearheading the official website redesign project — creating high-fidelity wireframes and prototypes in Figma to improve user conversion.</li>
+          <li><strong>AI Integration:</strong> Implementing Generative AI tools to accelerate the production of marketing assets, reducing creative turnaround time significantly.</li>
+          <li><strong>Visual Communication:</strong> Managing all creative assets including social media posts, webinar banners, and digital marketing collaterals.</li>
+        </ul>
+        <div class="skills-chips">
+          <span class="skill-chip">Figma</span>
+          <span class="skill-chip">Generative AI</span>
+          <span class="skill-chip">Campaign Strategy</span>
+          <span class="skill-chip">UI/UX</span>
+          <span class="skill-chip">RCS Marketing</span>
+        </div>
+      </div>
+
+      <!-- Senior Executive -->
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-date">JAN 2022 — DEC 2025</div>
+        <div class="exp-role">Senior Executive — Campaign Manager</div>
+        <div class="exp-company">Samco Mutual Fund</div>
+        <ul class="exp-points">
+          <li>Managed end-to-end B2B and B2C communication journeys, boosting customer engagement and lead generation.</li>
+          <li>Cultivated strong vendor relationships with VILpower and RouteMobile for effective SMS and WhatsApp solutions.</li>
+          <li>Utilized marketing automation with Mautic, Text Local, and Zapier to enhance operational efficiency.</li>
+          <li>Created detailed Business Requirements and software bug reports for process improvements, presented to top management.</li>
+          <li>Designed microsites to support the Sales Team and coordinate corporate events.</li>
+          <li>Led graphic design for social media, emailers, webinar campaigns, WhatsApp forwards, and landing pages.</li>
+        </ul>
+        <div class="skills-chips">
+          <span class="skill-chip">Photoshop</span>
+          <span class="skill-chip">Illustrator</span>
+          <span class="skill-chip">Mautic</span>
+          <span class="skill-chip">WhatsApp API</span>
+          <span class="skill-chip">Email Marketing</span>
+          <span class="skill-chip">B2B/B2C</span>
+          <span class="skill-chip">Zapier</span>
+        </div>
+      </div>
+
+      <!-- Email Executive -->
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-date">OCT 2021 — DEC 2022</div>
+        <div class="exp-role">Email Executive</div>
+        <div class="exp-company">Samco Securities</div>
+        <ul class="exp-points">
+          <li>Designed and executed high-volume B2B and B2C email campaigns for Samco Securities.</li>
+          <li>Developed and deployed targeted WhatsApp and SMS marketing sequences.</li>
+          <li>Managed and cleaned complex databases for precise audience segmentation and targeting.</li>
+          <li>Foundation role that built core marketing automation and design skills.</li>
+        </ul>
+        <div class="skills-chips">
+          <span class="skill-chip">Email Design</span>
+          <span class="skill-chip">SMS Marketing</span>
+          <span class="skill-chip">Database Management</span>
+          <span class="skill-chip">Audience Segmentation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI & Tech Skills -->
+    <div class="section-header fade-in" style="margin-top: 4rem;">
+      <span class="section-label">// technical arsenal</span>
+      <h3 class="section-title" style="font-size: 2rem;">Skills & Tools</h3>
+    </div>
+
+    <div class="ai-grid fade-in">
+      <div class="ai-card">
+        <div class="ai-card-label">Graphic Design</div>
+        <div class="ai-card-title">Adobe Photoshop</div>
+        <div class="ai-card-desc">Advanced photo compositing, digital illustration, and marketing creative production.</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-label">Vector Design</div>
+        <div class="ai-card-title">Adobe Illustrator</div>
+        <div class="ai-card-desc">Logo design, brand identity, vector illustration, and print-ready artwork.</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-label">UI/UX</div>
+        <div class="ai-card-title">Figma</div>
+        <div class="ai-card-desc">High-fidelity wireframes, prototypes, component libraries, and design systems.</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-label">AI Imaging</div>
+        <div class="ai-card-title">Generative AI — Visual</div>
+        <div class="ai-card-desc">Midjourney, Stable Diffusion, and AI tools for concept creation and image generation.</div>
+      </div>
+      <!-- <div class="ai-card">
+        <div class="ai-card-label">AI Video</div>
+        <div class="ai-card-title">Video Generation AI</div>
+        <div class="ai-card-desc">AI-driven video production and animation for social media content at scale.</div>
+      </div> -->
+      <div class="ai-card">
+        <div class="ai-card-label">AI Copy</div>
+        <div class="ai-card-title">LLM Content Writing</div>
+        <div class="ai-card-desc">Leveraging Large Language Models for professional content writing and marketing copy.</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-label">Quick Design</div>
+        <div class="ai-card-title">Canva</div>
+        <div class="ai-card-desc">Rapid campaign asset creation and team collaboration for quick-turnaround creatives.</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-label">Web</div>
+        <div class="ai-card-title">HTML & CSS</div>
+        <div class="ai-card-desc">Frontend markup for email templates, microsites, and landing page development.</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-label">Automation</div>
+        <div class="ai-card-title">Mautic + Zapier</div>
+        <div class="ai-card-desc">Marketing automation workflows, drip campaigns, and CRM integrations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-label">// the human behind the work</span>
+      <h2 class="section-title">About Me</h2>
+    </div>
+
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p>
+          Dynamic and result-oriented professional based in Jogeshwari (E), Mumbai — where the creative energy of a city of dreams fuels everything I build. With over 4 years of hands-on experience spanning Graphic Design, Campaign Management, and UI/UX, I sit at the intersection of aesthetics and strategy.
+        </p>
+        <p>
+          I started my journey at Samco Securities in 2021 as an Email Executive, learning the ropes of high-volume digital communication. That foundation allowed me to grow rapidly — within a year I moved into a Campaign Manager role at Samco Mutual Fund, where I built complete B2B and B2C marketing ecosystems from scratch.
+        </p>
+        <p>
+          Today, as Assistant Manager — Marketing & Graphic Design, I lead the end-to-end redesign of the Samco Mutual Fund corporate website, combining my Figma UI/UX skills with real user research and conversion optimization thinking. I'm also deeply invested in the AI revolution — integrating Generative AI into our marketing workflows to accelerate production while keeping quality high.
+        </p>
+        <p>
+          I believe good design is never just decoration — it's communication. Every pixel, every color choice, every layout decision should serve the person on the other end of the screen. That philosophy guides everything I create, whether it's a logo, a landing page, or an email that reaches a million inboxes.
+        </p>
+
+        <div class="education-box">
+          <div class="edu-item">
+            <div class="edu-title">Jio AI Course</div>
+            <div class="edu-sub">Professional training in Artificial Intelligence applications</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">B.Sc. Computer Science</div>
+            <div class="edu-sub">Shree GMP Degree College — 2020</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">Graphic Design Certification</div>
+            <div class="edu-sub">DesignD Institute</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-title">Web Designing</div>
+            <div class="edu-sub">Kohinoor Technical Institute</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-sticky-wrap fade-in">
+        <div class="big-sticky sticky-yellow">
+          <h3>What I Bring to the Table</h3>
+          <ul>
+            <li>Brand Identity & Logo Design</li>
+            <li>Social Media Campaign Design</li>
+            <li>UI/UX Design in Figma</li>
+            <li>Email Marketing & Automation</li>
+            <li>WhatsApp & SMS Campaign Management</li>
+            <li>Generative AI Creative Production</li>
+            <li>Landing Page & Microsite Design</li>
+            <li>B2B & B2C Marketing Strategy</li>
+          </ul>
+        </div>
+
+        <div class="tool-sticky">
+          <h3>Design Toolkit</h3>
+          <div class="tool-tags">
+            <span class="tool-tag-item">Adobe Photoshop</span>
+            <span class="tool-tag-item">Adobe Illustrator</span>
+            <span class="tool-tag-item">Figma</span>
+            <span class="tool-tag-item">Canva</span>
+            <span class="tool-tag-item">Midjourney</span>
+            <span class="tool-tag-item">Mautic</span>
+            <span class="tool-tag-item">Zapier</span>
+            <span class="tool-tag-item">Text Local</span>
+            <span class="tool-tag-item">VILpower</span>
+            <span class="tool-tag-item">RouteMobile</span>
+            <span class="tool-tag-item">HTML</span>
+            <span class="tool-tag-item">CSS</span>
+          </div>
+        </div>
+
+        <div class="big-sticky sticky-blue" style="background: var(--blue-sticky); transform: rotate(1deg);">
+          <h3>Currently Working On</h3>
+          <ul>
+            <li>Samco MF Website Full Redesign</li>
+            <li>AI-powered marketing workflow</li>
+            <li>RCS Campaign Automation</li>
+            <!-- <li>Video Gen AI for social content</li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <span class="section-label">// recognition & milestones</span>
+      <h2 class="section-title">Achievements</h2>
+      <p class="section-subtitle">Milestones that mark the journey so far</p>
+    </div>
+
+    <div class="ach-grid fade-in">
+      <div class="ach-card">
+        <div class="ach-num">★</div>
+        <div class="ach-title">Appreciation Letter & Certificate</div>
+        <div class="ach-desc">Officially recognized by Samco AMC management for excellent contributions during the landmark SAMCO AMC launch in 2021 — a company-defining milestone that required exceptional creative and operational output under tight deadlines.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-num">↑</div>
+        <div class="ach-title">Promoted to Assistant Manager</div>
+        <div class="ach-desc">Promoted from Senior Executive to Assistant Manager — Marketing & Graphic Design on 30th December 2025, recognizing consistent high-impact performance across campaign management, UI/UX design, and creative leadership.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-num">AI</div>
+        <div class="ach-title">AI-Powered Digital Transformation</div>
+        <div class="ach-desc">Successfully transitioned manual, repetitive marketing processes into automated, AI-enhanced workflows — reducing creative production time and enabling the team to scale output without proportionally scaling resources.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-num">3+</div>
+        <div class="ach-title">Years at One of India's Fast-Growing AMCs</div>
+        <div class="ach-desc">Contributed across every stage of Samco Mutual Fund's marketing growth — from brand-new AMC launch in 2021 to a maturing fund house with multiple schemes, ₹2,900+ Cr AUM, and 2,00,000+ investors.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-num">∞</div>
+        <div class="ach-title">Website Redesign Leadership</div>
+        <div class="ach-desc">Currently spearheading the complete UI/UX overhaul of the Samco Mutual Fund corporate website — the most ambitious design project in the company's digital history, with high-fidelity Figma prototyping and cross-team collaboration.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-num">🎓</div>
+        <div class="ach-title">Jio AI Certification</div>
+        <div class="ach-desc">Completed professional certification in Artificial Intelligence applications from Jio — adding formal AI expertise to a practical working knowledge already applied daily in creative production and marketing automation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">// let's connect</span>
+      <h2 class="section-title">Get In Touch</h2>
+    </div>
+
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <span class="contact-label">Phone</span>
+            <div class="contact-value"><a href="tel:+919987314768">+91 9987314768</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div>
+            <span class="contact-label">Email</span>
+            <div class="contact-value"><a href="mailto:Mrsaifullah631@gmail.com">Mrsaifullah631@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <span class="contact-label">Location</span>
+            <div class="contact-value">Jogeshwari (E), Mumbai,<br>Maharashtra, India</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <span class="contact-label">Current Role</span>
+            <div class="contact-value">Assistant Manager — Marketing & Graphic Design<br><span style="color: var(--faded-teal); font-size: 0.8rem;">Samco Mutual Fund</span></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🛠</div>
+          <div>
+            <span class="contact-label">Core Skills</span>
+            <div class="contact-value">Photoshop · Illustrator · Figma · Generative AI · Campaign Management</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-message">
+        <h3>Open to Opportunities</h3>
+        <p>
+          Whether you're looking for a creative collaborator, a marketing design partner, or someone to lead your brand's visual identity — I'd love to hear from you. Based in Mumbai, available for freelance projects, collaborations, and full-time opportunities.
+        </p>
+        <p>
+          With 3+ years at one of India's growing asset management companies, I bring a rare blend of design craft, marketing strategy, and AI-powered workflow optimization to the table.
+        </p>
+        <a href="mailto:Mrsaifullah631@gmail.com" class="btn-primary" style="background: var(--rust); border-color: var(--rust);">Send Me a Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">
+    © SAIFULLAH SHAIKH — DESIGNED WITH ♥ IN MUMBAI
+  </div>
+  <div style="font-family: 'Courier Prime', monospace; font-size: 0.75rem; color: var(--faded-ink); margin-top: 0.5rem; letter-spacing: 1px;">
+    Photoshop · Illustrator · Figma · Generative AI
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">PROJECT TITLE</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-img-area" id="modalImgArea">
+        <!-- Modal image shows same img as card -->
+        <img id="modalImg" src="" alt="Project Preview" style="width:100%;height:100%;object-fit:contain;display:none;">
+        <div class="placeholder-text" id="modalImgText">[ Creative Preview ]<br><span style="font-size: 1rem; opacity: 0.6;">Add image link to card to see preview</span></div>
+      </div>
+      <p id="modalDesc" style="font-size: 0.88rem; color: var(--faded-ink); line-height: 1.8; margin-bottom: 1rem;"></p>
+      <div class="modal-meta">
+        <span class="modal-tag" id="modalTool"></span>
+        <span class="modal-tag" id="modalCat" style="background: var(--faded-teal);"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // NAV HAMBURGER
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // SMOOTH NAV
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('navLinks').classList.remove('open');
+      }
+    });
+  });
+
+  // WORK TABS
+  document.getElementById('workTabs').addEventListener('click', function(e) {
+    const tab = e.target.closest('.work-tab');
+    if (!tab) return;
+    document.querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.work-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+  });
+
+  // MODAL
+  function openModal(title, desc, tool, cat, imgSrc) {
+    document.getElementById('modalTitle').textContent = title.toUpperCase();
+    document.getElementById('modalDesc').textContent = desc;
+    document.getElementById('modalTool').textContent = tool;
+    document.getElementById('modalCat').textContent = cat;
+    var modalImg = document.getElementById('modalImg');
+    var modalImgText = document.getElementById('modalImgText');
+    if (imgSrc && !imgSrc.includes('placehold.co')) {
+      modalImg.src = imgSrc;
+      modalImg.style.display = 'block';
+      modalImgText.style.display = 'none';
+    } else if (imgSrc && imgSrc.includes('placehold.co')) {
+      modalImg.src = imgSrc;
+      modalImg.style.display = 'block';
+      modalImgText.style.display = 'none';
+    } else {
+      modalImg.style.display = 'none';
+      modalImgText.style.display = 'block';
+    }
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // SCROLL ANIMATIONS
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // BACK TO TOP
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('backTop');
+    if (window.scrollY > 400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+
+  // ACTIVE NAV HIGHLIGHT
+  const sections = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    navAs.forEach(a => {
+      a.style.color = '';
+      if (a.getAttribute('href') === '#' + current) a.style.color = '#F5E87A';
+    });
+  });
+</script>
+</body>
+</html>
